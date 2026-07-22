@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Artsake | Sales Assets Repository 2026</title>
+  <title>Artsake | Sales Assets & File Repository</title>
   <style>
     :root {
       --bg: #FAFAFA;
@@ -11,7 +11,6 @@
       --text-main: #111111;
       --text-muted: #666666;
       --border: #E8E8E8;
-      --border-hover: #D0D0D0;
       --accent-orange: #FF3B1D;
       --hover-bg: #F5F5F5;
       --badge-pdf-bg: #FFF0ED;
@@ -37,11 +36,11 @@
     }
 
     .container {
-      max-width: 960px;
+      max-width: 980px;
       margin: 0 auto;
     }
 
-    /* Artsake Header */
+    /* Artsake Header with real logo */
     header {
       display: flex;
       justify-content: space-between;
@@ -53,24 +52,15 @@
 
     .logo-container {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       text-decoration: none;
     }
 
-    .logo-text {
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: -1px;
-      color: var(--text-main);
-    }
-
-    .logo-dot {
-      width: 8px;
-      height: 8px;
-      background-color: var(--accent-orange);
-      border-radius: 50%;
-      display: inline-block;
-      margin-left: 2px;
+    .logo-img {
+      height: 38px;
+      width: auto;
+      display: block;
+      object-fit: contain;
     }
 
     .header-tag {
@@ -80,7 +70,7 @@
       text-transform: uppercase;
       color: var(--text-muted);
       background: #F0F0F0;
-      padding: 4px 12px;
+      padding: 6px 14px;
       border-radius: 20px;
     }
 
@@ -251,7 +241,6 @@
       display: block;
     }
 
-    /* Footer */
     footer {
       margin-top: 32px;
       text-align: center;
@@ -263,26 +252,26 @@
 <body>
 
 <div class="container">
-  <!-- Artsake Branding Header -->
+  <!-- Header using Real Logo Image -->
   <header>
-    <a href="#" class="logo-container">
-      <span class="logo-text">artsake</span><span class="logo-dot"></span>
+    <a href="https://files.artsake.com" class="logo-container">
+      <img src="logo.avif" alt="Artsake Logo" class="logo-img">
     </a>
-    <span class="header-tag">2026 Sales Repository</span>
+    <span class="header-tag">files.artsake.com</span>
   </header>
 
-  <!-- Controls -->
+  <!-- Search Bar -->
   <div class="controls-bar">
     <div class="search-box">
       <svg class="search-icon" viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      <input type="text" id="searchInput" class="search-input" placeholder="Search presentations, pricing, decks, or links...">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search presentations, proposals, look books, or assets...">
     </div>
   </div>
 
-  <!-- Main Repository Container -->
+  <!-- Repository File Card -->
   <div class="repo-card">
     <div class="repo-header">
-      <span>File / Document Name</span>
+      <span>File / Directory Structure</span>
       <span>Action</span>
     </div>
 
@@ -290,58 +279,69 @@
   </div>
 
   <footer>
-    &copy; 2026 Artsake Inc. Confidential Sales & Client Presentation Repository.
+    &copy; Artsake Inc. Internal Sales Repository & Client Presentation Vault.
   </footer>
 </div>
 
 <script>
-  // Complete Folder & File Tree matching your screenshot
+  // Exact folder & file structure matching GitHub main branch
   const repositoryData = [
     {
-      name: "2026 Root Folder",
+      name: "Root Quick Access",
       type: "folder",
       expanded: true,
       children: [
-        { name: "Artsake 2026 Coloring Book.pdf", type: "pdf", url: "#" },
-        { name: "Artsake 2026 B2B Welcome Deck.pdf", type: "pdf", url: "#" },
-        { name: "Artsake 2026 Book Box.pdf", type: "pdf", url: "#" },
+        { name: "LookBook.pdf", type: "pdf", url: "LookBook.pdf" },
+        { name: "WelcomeDeck.pdf", type: "pdf", url: "WelcomeDeck.pdf" }
+      ]
+    },
+    {
+      name: "2026",
+      type: "folder",
+      expanded: true,
+      children: [
+        { name: "Artsake 2026 Accordion Look Book.pdf", type: "pdf", url: "2026/Artsake%202026%20Accordion%20Look%20Book.pdf" },
+        { name: "Artsake 2026 B2B Look Book.pdf", type: "pdf", url: "2026/Artsake%202026%20B2B%20Look%20Book.pdf" },
+        { name: "Artsake 2026 B2B Welcome Deck.pdf", type: "pdf", url: "2026/Artsake%202026%20B2B%20Welcome%20Deck.pdf" },
+        { name: "Artsake 2026 BDNY Assets.pdf", type: "pdf", url: "2026/Artsake%202026%20BDNY%20Assets.pdf" },
+        { name: "Artsake 2026 Book Box.pdf", type: "pdf", url: "2026/Artsake%202026%20Book%20Box.pdf" },
+        { name: "Artsake 2026 Coloring Book.pdf", type: "pdf", url: "2026/Artsake%202026%20Coloring%20Book.pdf" },
+        { name: "Artsake 2026 Trade Pricing.pdf", type: "pdf", url: "2026/Artsake%202026%20Trade%20Pricing.pdf" },
+        { name: "Artsake 2026 Welcome Book.pdf", type: "pdf", url: "2026/Artsake%202026%20Welcome%20Book.pdf" },
+        { name: "Artsake - Look Book URL", type: "link", url: "2026/Artsake%202026%20B2B%20Look%20Book.pdf" },
+        { name: "Artsake - Welcome Deck", type: "link", url: "2026/Artsake%202026%20B2B%20Welcome%20Deck.pdf" },
+        { name: "Artsake - For The Love of Art (artsake.com)", type: "link", url: "https://artsake.com" },
+        { name: "Map of Tomorrow | Interactive Development Map", type: "link", url: "#" },
+        { name: "LookBook.pdf", type: "pdf", url: "2026/LookBook.pdf" },
+        { name: "WelcomeDeck.pdf", type: "pdf", url: "2026/WelcomeDeck.pdf" }
+      ]
+    },
+    {
+      name: "examples",
+      type: "folder",
+      expanded: true,
+      children: [
+        { name: "Artsake x Renaissance OTT - Artwork Pre-Selection_v.1.pdf", type: "pdf", url: "examples/Artsake%20x%20Renaissance%20OTT%20-%20Artwork%20Pre-Selection_v.1.pdf" },
+        { name: "Artsake x MED2 Proposal_v.1.pdf", type: "pdf", url: "examples/Artsake%20x%20MED2%20Proposal_v.1.pdf" },
+        { name: "Artsake x Royalton Presentation_v.1.pdf", type: "pdf", url: "examples/Artsake%20x%20Royalton%20Presentation_v.1.pdf" },
+        { name: "Artsake x Moxy Montreal Suites and Lobby_v.1.pdf", type: "pdf", url: "examples/Artsake%20x%20Moxy%20Montreal%20Suites%20and%20Lobby_v.1.pdf" },
+        { name: "Artsake x Ardene HQ_v.1.pdf", type: "pdf", url: "examples/Artsake%20x%20Ardene%20HQ_v.1.pdf" },
         {
-          name: "Artsake Examples of Presentation Decks",
+          name: "files",
           type: "folder",
-          expanded: true,
+          expanded: false,
           children: [
-            { name: "Artsake x Renaissance OTT - Artwork Pre-Selection_v.1.pdf", type: "pdf", url: "#" },
-            { name: "Artsake x MED2 Proposal_v.1.pdf", type: "pdf", url: "#" },
-            { name: "Artsake x Royalton Presentation_v.1.pdf", type: "pdf", url: "#" },
-            {
-              name: "Files",
-              type: "folder",
-              expanded: false,
-              children: [
-                { name: "AB2EAF1E-6DA9-4A04-9751-473DE9F873FD.png", type: "img", url: "#" },
-                { name: "63AB5FD8-DF38-4F86-A523-00BB8D281721.png", type: "img", url: "#" },
-                { name: "0AB04B0C-7F6E-4F34-9220-B0B196A22A6C.png", type: "img", url: "#" },
-                { name: "Artsake Wall Art Proposal - Moxy Montreal v.Final (dragged).pdf", type: "pdf", url: "#" }
-              ]
-            },
-            { name: "Artsake x Moxy Montreal Suites and Lobby_v.1.pdf", type: "pdf", url: "#" },
-            { name: "Artsake x Ardene HQ_v.1.pdf", type: "pdf", url: "#" }
+            { name: "0AB04B0C-7F6E-4F34-9220-B0B196A22A6C.png", type: "img", url: "examples/files/0AB04B0C-7F6E-4F34-9220-B0B196A22A6C.png" },
+            { name: "63AB5FD8-DF38-4F86-A523-00BB8D281721.png", type: "img", url: "examples/files/63AB5FD8-DF38-4F86-A523-00BB8D281721.png" },
+            { name: "AB2EAF1E-6DA9-4A04-9751-473DE9F873FD.png", type: "img", url: "examples/files/AB2EAF1E-6DA9-4A04-9751-473DE9F873FD.png" },
+            { name: "Artsake Wall Art Proposal - Moxy Montreal v.Final.pdf", type: "pdf", url: "examples/files/Artsake%20Wall%20Art%20Proposal%20-%20Moxy%20Montreal%20v.Final%20(dragged).pdf" }
           ]
-        },
-        { name: "Artsake 2026 BDNY Assets.pdf", type: "pdf", url: "#" },
-        { name: "Artsake 2026 Welcome Book.pdf", type: "pdf", url: "#" },
-        { name: "Artsake - For The Love of Art – artsake.com", type: "link", url: "https://artsake.com" },
-        { name: "Artsake 2026 Trade Pricing.pdf", type: "pdf", url: "#" },
-        { name: "Artsake - Welcome Deck", type: "link", url: "#" },
-        { name: "Artsake 2026 B2B Look Book.pdf", type: "pdf", url: "#" },
-        { name: "Artsake - Look Book URL", type: "link", url: "#" },
-        { name: "Map of Tomorrow | Interactive Future Development Map", type: "link", url: "#" },
-        { name: "Artsake 2026 Accordion Look Book.pdf", type: "pdf", url: "#" }
+        }
       ]
     }
   ];
 
-  // SVG Icons
+  // Icons
   const icons = {
     folder: `<svg width="18" height="18" viewBox="0 0 24 24" fill="#64748B"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>`,
     pdf: `<svg width="18" height="18" viewBox="0 0 24 24" fill="#D32F2F"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5z"/></svg>`,
@@ -358,17 +358,17 @@
       const row = document.createElement('div');
       row.className = 'item-row';
       
-      const indent = depth * 24;
+      const indent = depth * 20;
       
       let chevronHtml = node.type === 'folder' 
         ? `<span class="${node.expanded ? 'chevron expanded' : 'chevron'}">${icons.chevron}</span>` 
         : `<span style="width:24px; display:inline-block;"></span>`;
 
       let badgeClass = 'badge-folder';
-      let actionLabel = 'Open Folder';
+      let actionLabel = 'Expand';
       
-      if (node.type === 'pdf') { badgeClass = 'badge-pdf'; actionLabel = 'Download PDF'; }
-      if (node.type === 'link') { badgeClass = 'badge-link'; actionLabel = 'Visit Link'; }
+      if (node.type === 'pdf') { badgeClass = 'badge-pdf'; actionLabel = 'Open PDF'; }
+      if (node.type === 'link') { badgeClass = 'badge-link'; actionLabel = 'Open Link'; }
       if (node.type === 'img') { badgeClass = 'badge-img'; actionLabel = 'View Asset'; }
 
       row.innerHTML = `
@@ -380,7 +380,7 @@
           <span class="badge ${badgeClass}">${node.type}</span>
           ${node.type !== 'folder' 
             ? `<a href="${node.url}" target="_blank" class="action-btn">${actionLabel}</a>` 
-            : `<button class="action-btn">Toggle</button>`
+            : `<button class="action-btn">Folder</button>`
           }
         </div>
       `;
@@ -394,7 +394,7 @@
         li.appendChild(childUl);
 
         row.addEventListener('click', (e) => {
-          if (e.target.tagName === 'A') return; // Don't toggle folder on link click
+          if (e.target.tagName === 'A') return;
           const isOpen = childUl.classList.contains('open');
           childUl.classList.toggle('open', !isOpen);
           const chev = row.querySelector('.chevron');
@@ -406,11 +406,11 @@
     });
   }
 
-  // Initialize Tree
+  // Initialize
   const treeRoot = document.getElementById('treeRoot');
-  renderTree(repositoryData[0].children, treeRoot);
+  renderTree(repositoryData, treeRoot);
 
-  // Search Filter Implementation
+  // Instant Search
   document.getElementById('searchInput').addEventListener('input', function(e) {
     const query = e.target.value.toLowerCase().trim();
     const rows = document.querySelectorAll('.tree-item');
@@ -421,7 +421,6 @@
         item.style.display = '';
       } else if (title && title.includes(query)) {
         item.style.display = '';
-        // Ensure parent containers are visible when matching search
         let parent = item.parentElement;
         while (parent && parent.classList.contains('children-container')) {
           parent.classList.add('open');
