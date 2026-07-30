@@ -71,12 +71,32 @@
         .warning strong {
             color: #dc3545;
         }
+        .download-btn {
+            display: inline-block;
+            background-color: #c77e7a;
+            color: #ffffff;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.2s ease;
+        }
+        .download-btn:hover {
+            background-color: #a86561;
+        }
     </style>
 </head>
 <body>
 
     <h1>Artsake: Django Migration Developer Guide</h1>
     <p>Welcome to the Artsake storefront migration project. We are transitioning this site from Shopify to a custom Django application. Please follow these strict guidelines to ensure the static assets and templates render correctly in the Django environment.</p>
+
+    <div class="guide-section">
+        <h2>📦 Project Assets</h2>
+        <p>Before you begin, please download the compiled project assets (including the sanitized CSS, images, and fonts):</p>
+        <a href="https://files.artsake.com/shopify.zip" class="download-btn" target="_blank" rel="noopener noreferrer">Download Shopify Assets ZIP</a>
+    </div>
 
     <div class="guide-section">
         <h2>1. The File Structure</h2>
