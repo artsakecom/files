@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artsake - Django Developer Guide</title>
+    <style>
+        :root {
+            --bg-color: #fafafa;
+            --text-color: #333333;
+            --brand-color: #101430;
+            --code-bg: #e6e6e6;
+            --card-bg: #ffffff;
+            --border-radius: 8px;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            color: var(--brand-color);
+            border-bottom: 2px solid var(--brand-color);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--brand-color);
+            margin-top: 40px;
+        }
+        .guide-section {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        code {
+            background-color: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.95em;
+            color: #d63384;
+        }
+        pre {
+            background-color: #242424;
+            color: #fafafa;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.95em;
+        }
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        .warning strong {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Artsake: Django Migration Developer Guide</h1>
+    <p>Welcome to the Artsake storefront migration project. We are transitioning this site from Shopify to a custom Django application. Please follow these strict guidelines to ensure the static assets and templates render correctly in the Django environment.</p>
+
+    <div class="guide-section">
+        <h2>1. The File Structure</h2>
+        <p>Our project follows standard Django conventions. Your working directories are structured as follows:</p>
+        <ul>
+            <li><strong>Templates:</strong> <code>artsake/templates/pages/index.html</code></li>
+            <li><strong>Stylesheets:</strong> <code>artsake/static/css/</code></li>
+            <li><strong>Images:</strong> <code>artsake/static/images/</code> (with a <code>web/</code> subfolder)</li>
+            <li><strong>Fonts:</strong> <code>artsake/static/fonts/</code></li>
+        </ul>
+    </div>
+
+    <div class="guide-section">
+        <h2>2. The Golden Rule: Load Static</h2>
+        <p>Because Django separates HTML templates from static assets (like images, CSS, and fonts), you cannot use standard HTML relative paths for your assets.</p>
+        <p>At the very top of your <code>index.html</code> file (Line 1), you <strong>must</strong> include the following tag. If this is missing, Django will crash when trying to load assets.</p>
+        <pre><code>{% load static %}</code></pre>
+    </div>
+
+    <div class="guide-section">
+        <h2>3. Linking CSS Files</h2>
+        <p>The project relies on three primary, sanitized CSS files. When linking them in the <code>&lt;head&gt;</code> of your HTML, you must wrap the paths in the Django static tag format so the server knows to look in the <code>static/css/</code> directory.</p>
+        <pre><code>&lt;!-- Include these in the &lt;head&gt; of your HTML --&gt;
+&lt;link rel="stylesheet" href="{% static 'css/customstyles_2.css' %}"&gt;
+&lt;link rel="stylesheet" href="{% static 'css/artsake-sections_3.css' %}"&gt;
+&lt;link rel="stylesheet" href="{% static 'css/2026-art-for-hospitalty-hero_2.css' %}"&gt;</code></pre>
+    </div>
+
+    <div class="guide-section">
+        <h2>4. Sourcing Images</h2>
+        <p>Most of the project images are nested inside the <code>artsake/static/images/web/</code> folder. You cannot write standard <code>src="images/web/logo.png"</code> tags.</p>
+        <p>Wrap the image path inside the static tag like this:</p>
+        <pre><code>&lt;!-- For standard images in the main images folder --&gt;
+&lt;img src="{% static 'images/logo.png' %}" alt="Artsake Logo"&gt;
+
+&lt;!-- For images inside the 'web' subfolder --&gt;
+&lt;img src="{% static 'images/web/Art_for_Hospitality_Banner.png' %}" alt="Hospitality Banner"&gt;</code></pre>
+    </div>
+
+    <div class="guide-section">
+        <h2>5. Handling Fonts in CSS</h2>
+        <p>Because Django serves everything out of the root <code>static</code> folder, the CSS files in the <code>css/</code> folder need to know how to find the <code>fonts/</code> folder.</p>
+        <p>In your CSS files, use a relative path that jumps up one directory to access the fonts:</p>
+        <pre><code>@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/poppins_n3.woff2') format('woff2');
+}</code></pre>
+    </div>
+
+    <div class="guide-section">
+        <h2>6. No Shopify Liquid Allowed</h2>
+        <p>This is a transition away from Shopify. Django uses Python and Jinja-style templating. You may encounter legacy code snippets.</p>
+        <div class="warning">
+            <p><strong>⚠️ CRITICAL:</strong></p>
+            <p>Any old Shopify tags (e.g., <code>{{ settings.color_body_text }}</code> or <code>{% assign color_main_bg = settings.color_main_bg %}</code>) will cause <strong>fatal syntax errors</strong> in Django. Do not copy/paste raw Liquid logic into the Django HTML or CSS files. Use standard CSS variables and standard Django template tags only.</p>
+        </div>
+    </div>
+
+</body>
+</html>
